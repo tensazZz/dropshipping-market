@@ -1,0 +1,34 @@
+{% extends 'base-page.html' %}
+{% load static %}
+
+{% block title %}
+    Register
+{% endblock title %}
+
+{% block container %}
+
+    <!-- Modal -->
+<body>
+  <div class="container">
+    <h1>Регистрация</h1>
+    <form method="post" action="{% url 'register' %}">
+      {% csrf_token %}
+      {% for field in user_form %}
+      <div class="row">
+        <div class="col-12 col-lg-4 col-md-4 offset-md-4">
+          <div class="quote-form-wrapper">
+            <span style="color: red">{{ field.errors }}</span>
+            {{ field.label_tag }}
+            {{ field }}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+
+      <input type="submit" value="Зарегистрироваться">
+    </form>
+  </div>
+</body>
+<!-- End Contact -->
+{% endblock container %}

@@ -53,7 +53,7 @@ https://templatemo.com/tm-559-zay-shop
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
-            <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
+            <a class="navbar-brand text-success logo h1 align-self-center" href="/">
                 Zay
             </a>
 
@@ -73,8 +73,18 @@ https://templatemo.com/tm-559-zay-shop
                         <li class="nav-item">
                             <a class="nav-link" href="shop.html">Shop</a>
                         </li>
+                        {% if user.is_authenticated %}
+                            {{ user.username }}
+                        {% else %}
+
                         <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Contact</a>
+                            <a class="nav-link" href="{% url 'login' %}">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'register' %}">Register</a>
+                        <li class="nav-item">
+                        {% endif %}
+                            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
                         </li>
                     </ul>
                 </div>
@@ -152,7 +162,9 @@ https://templatemo.com/tm-559-zay-shop
                         <li><a class="text-decoration-none" href="/">About Us</a></li>
                         <li><a class="text-decoration-none" href="#">Shop Locations</a></li>
                         <li><a class="text-decoration-none" href="#">FAQs</a></li>
-                        <li><a class="text-decoration-none" href="#">Contact</a></li>
+                        <li><a class="text-decoration-none" href="/">Login</a></li>
+                        <li><a class="text-decoration-none" href="/">Register</a></li>
+                        <li><a class="text-decoration-none" href="/">Logout</a></li>
                     </ul>
                 </div>
 
